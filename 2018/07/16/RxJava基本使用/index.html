@@ -155,8 +155,7 @@
     </div>
     
     <div class="post-body post-content">
-        <p>###RxJava是什么?</p>
-<p><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">开源地址</a></p>
+        <h3 id="RxJava是什么"><a href="#RxJava是什么" class="headerlink" title="RxJava是什么?"></a>RxJava是什么?</h3><p><a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="noopener">开源地址</a></p>
 <p><a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="noopener">RxAndroid</a></p>
 <blockquote>
 </blockquote>
@@ -175,14 +174,13 @@
 <li>台灯（观察者）作为事件的处理方（处理“灯亮”和“灯灭”这两个事件），是被动的，是整个开灯事件流程的终点。</li>
 <li>在起点和终点之间，即事件传递的过程中是可以被加工，过滤，转换，合并等等方式处理的（上图没有体现，后面对会讲到）。</li>
 </ul>
-<p>###响应式编程是什么？</p>
-<blockquote>
+<h3 id="响应式编程是什么？"><a href="#响应式编程是什么？" class="headerlink" title="响应式编程是什么？"></a>响应式编程是什么？</h3><blockquote>
 </blockquote>
 <p>响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</p>
 <blockquote>
 </blockquote>
 <p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们的天气app从服务端获取到新的天气数据后，我们需要更新app上展示天气信息的UI；汽车上的车道偏移系统探测到车辆偏移了正常路线就会提醒驾驶者纠正，就是是响应事件。</p>
-<p>###RxJava好在哪？<br>例如：从服务器上拉去最新小区列表的需求，可能这样写：</p>
+<h3 id="RxJava好在哪？"><a href="#RxJava好在哪？" class="headerlink" title="RxJava好在哪？"></a>RxJava好在哪？</h3><p>例如：从服务器上拉去最新小区列表的需求，可能这样写：</p>
 <pre><code>new Thread() {
         @Override
         public void run() {
@@ -232,9 +230,7 @@
             .filter(house -&gt; house.price&gt;=5000000).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(this::addHouseInformationToScreen);
-</code></pre><p>###RxJava基本元素</p>
-<p>###RxJava基本使用</p>
-<p>####操作符<br><a href="http://reactivex.io/documentation/operators.html#creating" target="_blank" rel="noopener">Create</a></p>
+</code></pre><h3 id="RxJava基本元素"><a href="#RxJava基本元素" class="headerlink" title="RxJava基本元素"></a>RxJava基本元素</h3><h3 id="RxJava基本使用"><a href="#RxJava基本使用" class="headerlink" title="RxJava基本使用"></a>RxJava基本使用</h3><h4 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h4><p><a href="http://reactivex.io/documentation/operators.html#creating" target="_blank" rel="noopener">Create</a></p>
 <blockquote>
 </blockquote>
 <p>create 操作符应该是最常见的操作符了，主要用于产生一个 Obserable 被观察者对象，为了方便大家的认知，以后的教程中统一把被观察者 Observable 称为发射器（上游事件），观察者 Observer 称为接收器（下游事件）。</p>
@@ -322,8 +318,7 @@ Observable emit 4
 07-10 14:15:49.857 26872-26872/com.nanchen.rxjava2examples E/RxMapActivity: accept : This is result 1
 07-10 14:15:49.859 26872-26872/com.nanchen.rxjava2examples E/RxMapActivity: accept : This is result 2
 07-10 14:15:49.861 26872-26872/com.nanchen.rxjava2examples E/RxMapActivity: accept : This is result 3
-</code></pre><p>###<a href="http://reactivex.io/documentation/operators/concat.html" target="_blank" rel="noopener">Concat</a></p>
-<p>简单来说就是连接两个或多个发射器，向一个发射器一样，他们不产生交叉<br><img src="https://upload-images.jianshu.io/upload_images/3994917-717b7a5bae136a0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/610" alt=""></p>
+</code></pre><h4 id="Concat"><a href="#Concat" class="headerlink" title="Concat"></a><a href="http://reactivex.io/documentation/operators/concat.html" target="_blank" rel="noopener">Concat</a></h4><p>简单来说就是连接两个或多个发射器，向一个发射器一样，他们不产生交叉<br><img src="https://upload-images.jianshu.io/upload_images/3994917-717b7a5bae136a0e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/610" alt=""></p>
 <pre><code>  Observable.concat(Observable.just(1,2,3), Observable.just(4,5,6))
                 .subscribe(new Consumer&lt;Integer&gt;() {
                     @Override
@@ -339,8 +334,7 @@ Observable emit 4
 07-10 14:24:10.158 26872-26872/com.nanchen.rxjava2examples E/RxConcatActivity: concat : 4
 07-10 14:24:10.162 26872-26872/com.nanchen.rxjava2examples E/RxConcatActivity: concat : 5
 07-10 14:24:10.166 26872-26872/com.nanchen.rxjava2examples E/RxConcatActivity: concat : 6
-</code></pre><p>###<a href="http://reactivex.io/documentation/operators/flatmap.html" target="_blank" rel="noopener">FlatMap</a></p>
-<blockquote>
+</code></pre><h4 id="FlatMap"><a href="#FlatMap" class="headerlink" title="FlatMap"></a><a href="http://reactivex.io/documentation/operators/flatmap.html" target="_blank" rel="noopener">FlatMap</a></h4><blockquote>
 </blockquote>
 <p>transform the items emitted by an Observable into Observables, then flatten the emissions from those into a single Observable</p>
 <p><img src="http://reactivex.io/documentation/operators/images/flatMap.c.png" alt=""></p>
@@ -372,8 +366,7 @@ Observable emit 4
                });
 </code></pre><p>结果：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-24acfeb6e4f70ec4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="http://reactivex.io/documentation/operators/flatmap.html" target="_blank" rel="noopener">ConcatMap</a></p>
-<blockquote>
+<h3 id="ConcatMap"><a href="#ConcatMap" class="headerlink" title="ConcatMap"></a><a href="http://reactivex.io/documentation/operators/flatmap.html" target="_blank" rel="noopener">ConcatMap</a></h3><blockquote>
 </blockquote>
 <p>concatMap 与 FlatMap 的唯一区别就是 concatMap 保证了顺序，所以，我们就直接把 flatMap 替换为 concatMap 验证吧</p>
 <pre><code>Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() {
@@ -404,8 +397,7 @@ Observable emit 4
                 });
 </code></pre><p>执行结果：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-f619ff85cd5199e6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="https://upload-images.jianshu.io/upload_images/3994917-6b58db3710558ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" target="_blank" rel="noopener">Distinct</a></p>
-<p>顾名思义，去重操作符</p>
+<h3 id="Distinct"><a href="#Distinct" class="headerlink" title="Distinct"></a><a href="https://upload-images.jianshu.io/upload_images/3994917-6b58db3710558ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" target="_blank" rel="noopener">Distinct</a></h3><p>顾名思义，去重操作符</p>
 <pre><code>Observable.just(1, 1, 1, 2, 2, 3, 4, 5)
                 .distinct()
                 .subscribe(new Consumer&lt;Integer&gt;() {
@@ -417,8 +409,7 @@ Observable emit 4
                 });
 </code></pre><p>执行结果：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-9a9500abebd6097b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="http://reactivex.io/documentation/operators/filter.html" target="_blank" rel="noopener">Filter</a></p>
-<blockquote>
+<h3 id="Filter"><a href="#Filter" class="headerlink" title="Filter"></a><a href="http://reactivex.io/documentation/operators/filter.html" target="_blank" rel="noopener">Filter</a></h3><blockquote>
 </blockquote>
 <p>emit only those items from an Observable that pass a predicate test</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-cbb8917000cd55fa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/620" alt=""></p>
@@ -437,8 +428,7 @@ Observable emit 4
         });
 </code></pre><p>结果：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-c5cfda2812d122fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="http://reactivex.io/documentation/operators/just.html" target="_blank" rel="noopener">just</a></p>
-<p>就是一个简单的发射器依次调用 onNext() 方法。<br><img src="https://upload-images.jianshu.io/upload_images/3994917-6f7c4540d9a3b925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/622" alt=""></p>
+<h3 id="just"><a href="#just" class="headerlink" title="just"></a><a href="http://reactivex.io/documentation/operators/just.html" target="_blank" rel="noopener">just</a></h3><p>就是一个简单的发射器依次调用 onNext() 方法。<br><img src="https://upload-images.jianshu.io/upload_images/3994917-6f7c4540d9a3b925.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/622" alt=""></p>
 <pre><code>Observable.just(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -451,8 +441,7 @@ Observable emit 4
                 });
 </code></pre><p>结果：</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-703a9c26b2939314.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="http://reactivex.io/documentation/operators/buffer.html" target="_blank" rel="noopener">buffer</a></p>
-<blockquote>
+<h3 id="buffer"><a href="#buffer" class="headerlink" title="buffer"></a><a href="http://reactivex.io/documentation/operators/buffer.html" target="_blank" rel="noopener">buffer</a></h3><blockquote>
 <p>periodically gather items emitted by an Observable into bundles and emit these bundles rather than emitting the items one at a time<br>buffer </p>
 </blockquote>
 <blockquote>
@@ -477,8 +466,7 @@ Observable emit 4
                     }
                 });
 </code></pre><p>结果：<br>    <img src="https://upload-images.jianshu.io/upload_images/3994917-08cdefce3e1e21ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/700" alt=""></p>
-<p>###<a href="http://reactivex.io/documentation/operators/timer.html" target="_blank" rel="noopener">timer</a></p>
-<blockquote>
+<h3 id="timer"><a href="#timer" class="headerlink" title="timer"></a><a href="http://reactivex.io/documentation/operators/timer.html" target="_blank" rel="noopener">timer</a></h3><blockquote>
 </blockquote>
 <p>create an Observable that emits a particular item after a given delay</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/3994917-f29b7d6492d9f3f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/625" alt=""></p>
@@ -697,20 +685,17 @@ Observable.interval(3,2, TimeUnit.SECONDS)
 <blockquote>
 </blockquote>
 <p>accept: 成功：合并后的数据为 lolDataList1=灭世魔神 诺提勒斯,lolDataList2=灭世魔神 诺提勒斯</p>
-<p>####subScribeOn</p>
-<blockquote>
+<h3 id="subScribeOn"><a href="#subScribeOn" class="headerlink" title="#subScribeOn"></a>#subScribeOn</h3><blockquote>
 <p>指定的就是发射事件的线程</p>
 </blockquote>
 <p>多次指定发射事件的线程只有第一次指定的有效，也就是说多次调用 subscribeOn() 只有第一次的有效，其余的会被忽略</p>
-<p>####observeOn</p>
-<blockquote>
+<h3 id="observeOn"><a href="#observeOn" class="headerlink" title="#observeOn"></a>#observeOn</h3><blockquote>
 </blockquote>
 <p>指定的就是订阅者接收事件的线程。</p>
 <blockquote>
 <p>多次指定订阅者接收线程是可以的，也就是说每调用一次 observerOn()，下游的线程就会切换一次</p>
 </blockquote>
-<p>####线程切换</p>
-<pre><code>Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() {
+<h3 id="线程切换"><a href="#线程切换" class="headerlink" title="#线程切换"></a>#线程切换</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;Integer&gt;() {
          @Override
          public void subscribe(@NonNull ObservableEmitter&lt;Integer&gt; e) throws Exception {
              Log.e(TAG, &quot;Observable thread is : &quot; + Thread.currentThread().getName());
@@ -737,8 +722,7 @@ Observable.interval(3,2, TimeUnit.SECONDS)
 <pre><code>07-14 11:43:11.669 8550-8611/com.nanchen.rxjava2examples E/RxThreadActivity: Observable thread is : RxNewThreadScheduler-1
 07-14 11:43:11.670 8550-8550/com.nanchen.rxjava2examples E/RxThreadActivity: After observeOn(mainThread)，Current thread is main
 07-14 11:43:11.671 8550-8612/com.nanchen.rxjava2examples E/RxThreadActivity: After observeOn(io)，Current thread is RxCachedThreadScheduler-2
-</code></pre><p>####场景举例</p>
-<blockquote>
+</code></pre><h3 id="场景举例"><a href="#场景举例" class="headerlink" title="#场景举例"></a>#场景举例</h3><blockquote>
 </blockquote>
 <p>一个简单的网络请求</p>
 <pre><code>Observable.create(new ObservableOnSubscribe&lt;Response&gt;() {
@@ -798,8 +782,7 @@ Observable.interval(3,2, TimeUnit.SECONDS)
 07-13 09:13:08.702 16010-16010/com.nanchen.rxjava2examples E/RxNetSingleActivity: doOnNext: 保存成功：MobileAddress{error_code=10005, reason=&apos;应用未审核超时，请提交认证&apos;, result=null}
 07-13 09:13:08.737 16010-16010/com.nanchen.rxjava2examples E/RxNetSingleActivity: subscribe 线程:main
 07-13 09:13:08.741 16010-16010/com.nanchen.rxjava2examples E/RxNetSingleActivity: 成功:MobileAddress{error_code=10005, reason=&apos;应用未审核超时，请提交认证&apos;, result=null}
-</code></pre><p>####多个网络请求串行执行</p>
-<pre><code>Observable.create(new ObservableOnSubscribe&lt;LolDataList&gt;() {
+</code></pre><h3 id="多个网络请求串行执行"><a href="#多个网络请求串行执行" class="headerlink" title="#多个网络请求串行执行"></a>#多个网络请求串行执行</h3><pre><code>Observable.create(new ObservableOnSubscribe&lt;LolDataList&gt;() {
            @Override
            public void subscribe(ObservableEmitter&lt;LolDataList&gt; e) throws Exception {
                Log.e(TAG, &quot;create 线程:&quot; + Thread.currentThread().getName() + &quot;\n&quot;);
@@ -862,8 +845,7 @@ Observable.interval(3,2, TimeUnit.SECONDS)
 <pre><code>13 16:48:53.667 9180-9382/? E/RxCaseFlatMapActivity: create 线程:RxCachedThreadScheduler-2
 07-13 16:48:54.104 9180-9382/? E/RxCaseFlatMapActivity: flatMap 线程:RxCachedThreadScheduler-2
 07-13 16:48:54.105 9180-9180/? E/RxCaseFlatMapActivity: subscribe 线程:main6
-</code></pre><p>####间隔任务实现心跳</p>
-<pre><code>mDisposable = Flowable.interval(1, TimeUnit.SECONDS)
+</code></pre><h3 id="间隔任务实现心跳"><a href="#间隔任务实现心跳" class="headerlink" title="#间隔任务实现心跳"></a>#间隔任务实现心跳</h3><pre><code>mDisposable = Flowable.interval(1, TimeUnit.SECONDS)
               .doOnNext(new Consumer&lt;Long&gt;() {
                   @Override
                   public void accept(@NonNull Long aLong) throws Exception {
@@ -887,8 +869,7 @@ Observable.interval(3,2, TimeUnit.SECONDS)
 07-14 11:01:21.052 7399-7399/com.nanchen.rxjava2examples E/RxCaseIntervalActivity: accept: 设置文本 ：2
 07-14 11:01:22.049 7399-7660/com.nanchen.rxjava2examples E/RxCaseIntervalActivity: accept: doOnNext : 3
 07-14 11:01:22.051 7399-7399/com.nanchen.rxjava2examples E/RxCaseIntervalActivity: accept: 设置文本 ：3
-</code></pre><p>###资源链接</p>
-<p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/Single.html" target="_blank" rel="noopener">RxJava文档中文版</a></p>
+</code></pre><h3 id="资源链接"><a href="#资源链接" class="headerlink" title="资源链接"></a>资源链接</h3><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/Single.html" target="_blank" rel="noopener">RxJava文档中文版</a></p>
 
     </div>
 
@@ -925,7 +906,7 @@ Observable.interval(3,2, TimeUnit.SECONDS)
     <div class="widget">
         <h3 class="title">文章目录</h3>
         
-            <p>暂无目录</p>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava是什么"><span class="toc-text">RxJava是什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#响应式编程是什么？"><span class="toc-text">响应式编程是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava好在哪？"><span class="toc-text">RxJava好在哪？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava基本元素"><span class="toc-text">RxJava基本元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RxJava基本使用"><span class="toc-text">RxJava基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#操作符"><span class="toc-text">操作符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Concat"><span class="toc-text">Concat</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#FlatMap"><span class="toc-text">FlatMap</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConcatMap"><span class="toc-text">ConcatMap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Distinct"><span class="toc-text">Distinct</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Filter"><span class="toc-text">Filter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#just"><span class="toc-text">just</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#buffer"><span class="toc-text">buffer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#timer"><span class="toc-text">timer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#subScribeOn"><span class="toc-text">#subScribeOn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#observeOn"><span class="toc-text">#observeOn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#线程切换"><span class="toc-text">#线程切换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景举例"><span class="toc-text">#场景举例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多个网络请求串行执行"><span class="toc-text">#多个网络请求串行执行</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#间隔任务实现心跳"><span class="toc-text">#间隔任务实现心跳</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#资源链接"><span class="toc-text">资源链接</span></a></li></ol>
         
     </div>
 </aside>
