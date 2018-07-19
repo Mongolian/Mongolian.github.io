@@ -124,6 +124,7 @@
 
 
   <meta name="description" content="##Tinker 介绍 ##gradle 接入gradle是推荐的接入方式，在gradle插件tinker-patch-gradle-plugin中我们帮你完成proguard、multiDex以及Manifest处理等工作。 ##添加gradle依赖在项目的根目录build.gradle中，添加tinker-patch-gradle-plugin的依赖   引入tinker 核心库然后在base">
+<meta name="keywords" content="热补丁">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tinker 热补丁接入过程中的坑！！！">
 <meta property="og:url" content="http://yoursite.com/2016/12/09/Tinker-接入/index.html">
@@ -151,7 +152,7 @@
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1656668-d8a1a73be5a8da44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1656668-b90d5dad7406e453.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/1656668-a45fb9cc22d9fcaa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-07-09T13:02:53.000Z">
+<meta property="og:updated_time" content="2018-07-19T13:56:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tinker 热补丁接入过程中的坑！！！">
 <meta name="twitter:description" content="##Tinker 介绍 ##gradle 接入gradle是推荐的接入方式，在gradle插件tinker-patch-gradle-plugin中我们帮你完成proguard、multiDex以及Manifest处理等工作。 ##添加gradle依赖在项目的根目录build.gradle中，添加tinker-patch-gradle-plugin的依赖   引入tinker 核心库然后在base">
@@ -214,8 +215,7 @@
   
 <!-- 页面点击小红心 -->
 <script type="text/javascript" src="/js/src/love.js"></script>
-<!-- 背景动画 -->
-<script type="text/javascript" src="/js/src/particle.js"></script>
+
 
 
 
@@ -375,7 +375,7 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lee">
-      <meta itemprop="description" content="三人行必有我师！！！">
+      <meta itemprop="description" content="记录学习，生活中的点点滴滴...">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
@@ -430,7 +430,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-07-09 21:02:53" itemprop="dateModified" datetime="2018-07-09T21:02:53+08:00">2018-07-09</time>
+                <time title="修改时间：2018-07-19 21:56:15" itemprop="dateModified" datetime="2018-07-19T21:56:15+08:00">2018-07-19</time>
               
             
           </span>
@@ -606,6 +606,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/热补丁/" rel="tag">热补丁</a>
+          
+        </div>
+      
 
       
       
@@ -691,7 +697,7 @@
                 alt="lee" />
             
               <p class="site-author-name" itemprop="name">lee</p>
-              <p class="site-description motion-element" itemprop="description">三人行必有我师！！！</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，生活中的点点滴滴...</p>
           </div>
 
           
@@ -701,7 +707,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -735,7 +741,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1310,3 +1320,7 @@
 </body>
 </html>
 
+<!-- 背景动画 -->
+<script type="text/javascript" src="/js/src/particle.js"></script>
+
+<!-- <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script> -->
