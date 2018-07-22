@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -99,9 +99,9 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Mist',
     version: '6.3.0',
-    sidebar: {"position":"right","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -124,10 +124,10 @@
 
 
   <meta name="description" content="背压 backpressure  背压是指在异步场景中，被观察者发送事件速度远快于观察者的处理速度的情况下，一种告诉上游的被观察者降低发送速度的策略，或者说背压是流速控制的一种策略Backpressure 其实是一种现象：在数据流从上游生产者向下游消费者传输的过程中，上游生产速度大于下游消费速度，导致下游的 Buffer 溢出，这种现象就叫做 Backpressure 出现。  背压策略的一个前提">
-<meta name="keywords" content="RxJava">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RxJava背压使用">
-<meta property="og:url" content="http://yoursite.com/2018/07/20/RxJava-背压/index.html">
+<meta property="og:title" content="RxJava2.0 中的背压">
+<meta property="og:url" content="http://yoursite.com/2018/07/21/RxJava-背压/index.html">
 <meta property="og:site_name" content="lee">
 <meta property="og:description" content="背压 backpressure  背压是指在异步场景中，被观察者发送事件速度远快于观察者的处理速度的情况下，一种告诉上游的被观察者降低发送速度的策略，或者说背压是流速控制的一种策略Backpressure 其实是一种现象：在数据流从上游生产者向下游消费者传输的过程中，上游生产速度大于下游消费速度，导致下游的 Buffer 溢出，这种现象就叫做 Backpressure 出现。  背压策略的一个前提">
 <meta property="og:locale" content="zh-CN">
@@ -137,9 +137,9 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-4f1491dc00379221.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-0ecb3acafde7bef5.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1008453-b33a420575152ace.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/700">
-<meta property="og:updated_time" content="2018-07-20T14:53:56.000Z">
+<meta property="og:updated_time" content="2018-07-21T14:06:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RxJava背压使用">
+<meta name="twitter:title" content="RxJava2.0 中的背压">
 <meta name="twitter:description" content="背压 backpressure  背压是指在异步场景中，被观察者发送事件速度远快于观察者的处理速度的情况下，一种告诉上游的被观察者降低发送速度的策略，或者说背压是流速控制的一种策略Backpressure 其实是一种现象：在数据流从上游生产者向下游消费者传输的过程中，上游生产速度大于下游消费速度，导致下游的 Buffer 溢出，这种现象就叫做 Backpressure 出现。  背压策略的一个前提">
 <meta name="twitter:image" content="https://pic4.zhimg.com/80/v2-437f4c6e00172de4c28c8cb8dd796836_hd.jpg">
 
@@ -148,7 +148,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/20/RxJava-背压/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/21/RxJava-背压/"/>
 
 
 
@@ -158,7 +158,7 @@
   };
 </script>
 
-  <title>RxJava背压使用 | lee</title>
+  <title>RxJava2.0 中的背压 | lee</title>
   
 
 
@@ -356,7 +356,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/20/RxJava-背压/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/21/RxJava-背压/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="lee">
@@ -373,7 +373,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RxJava背压使用
+          <h1 class="post-title" itemprop="name headline">RxJava2.0 中的背压
               
             
           </h1>
@@ -398,7 +398,7 @@
                 
               
 
-              <time title="创建时间：2018-07-20 18:56:45 / 修改时间：22:53:56" itemprop="dateCreated datePublished" datetime="2018-07-20T18:56:45+08:00">2018-07-20</time>
+              <time title="创建时间：2018-07-21 18:56:45 / 修改时间：22:06:20" itemprop="dateCreated datePublished" datetime="2018-07-21T18:56:45+08:00">2018-07-21</time>
             
 
             
@@ -420,7 +420,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/rxjava/" itemprop="url" rel="index"><span itemprop="name">rxjava</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
 
                 
                 
@@ -428,18 +428,6 @@
             </span>
           
 
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/07/20/RxJava-背压/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/07/20/RxJava-背压/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -926,7 +914,7 @@ onBackpressureLatest()
       
         <div class="post-tags">
           
-            <a href="/tags/RxJava/" rel="tag">RxJava</a>
+            <a href="/tags/hexo/" rel="tag">hexo</a>
           
         </div>
       
@@ -939,8 +927,8 @@ onBackpressureLatest()
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/19/Tinker-集成/" rel="next" title="Tinker 热补丁接入">
-                <i class="fa fa-chevron-left"></i> Tinker 热补丁接入
+              <a href="/2018/07/16/Hexo美化/" rel="next" title="hexo 个性化设置（大全）">
+                <i class="fa fa-chevron-left"></i> hexo 个性化设置（大全）
               </a>
             
           </div>
@@ -972,17 +960,6 @@ onBackpressureLatest()
 
           </div>
           
-
-  
-    <div class="comments" id="comments">
-      
-        <div id="gitment-container"></div>
-      
-    </div>
-
-  
-
-
 
         </div>
         
@@ -1032,7 +1009,7 @@ onBackpressureLatest()
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1283,30 +1260,6 @@ onBackpressureLatest()
 
     
 
-    
-      <script type="text/javascript">
-      function renderGitment(){
-        var gitment = new Gitmint({
-            id: window.location.pathname,
-            owner: 'Mongolian',
-            repo: 'blog-gitment-comments',
-            
-            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
-            
-            oauth: {
-            
-            
-                client_secret: '808d2436e5ddd386fa9161765dbdc39815fd0827',
-            
-                client_id: '9897958e56d173f92e0d'
-            }});
-        gitment.render('gitment-container');
-      }
-
-      
-      renderGitment();
-      
-      </script>
     
 
 
