@@ -132,7 +132,7 @@
 <meta property="og:description" content="kotlin 基础知识中文官方 kotlin官方sample 介绍基础语法（一）123456789101112fun getGreeting(): String &amp;#123;    val words = mutableListOf&amp;lt;String&amp;gt;()    words.add(&quot;Hello,&quot;)    words.add(&quot;world!&quot;)    return words.joinT">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://kymjs.com/qiniu/kotlin/3-1-1.png">
-<meta property="og:updated_time" content="2018-08-29T00:00:47.000Z">
+<meta property="og:updated_time" content="2018-09-05T06:27:41.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kotlin 基础知识">
 <meta name="twitter:description" content="kotlin 基础知识中文官方 kotlin官方sample 介绍基础语法（一）123456789101112fun getGreeting(): String &amp;#123;    val words = mutableListOf&amp;lt;String&amp;gt;()    words.add(&quot;Hello,&quot;)    words.add(&quot;world!&quot;)    return words.joinT">
@@ -410,7 +410,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2018-08-29 08:00:47" itemprop="dateModified" datetime="2018-08-29T08:00:47+08:00">2018-08-29</time>
+                <time title="修改时间：2018-09-05 14:27:41" itemprop="dateModified" datetime="2018-09-05T14:27:41+08:00">2018-09-05</time>
               
             
           </span>
@@ -506,7 +506,8 @@
 </blockquote>
 <p>在 Kotlin 中没有 static关键字,那么如果在 Java 代码中想要通过类名调用一个 Kotlin 类的方法，你需要给这个方法加入@JvmStatic注解（这个注解只在 jvm 平台有用）<br>companion object表示外部类的一个伴生对象，你可以把他理解为外部类自动创建了一个对象作为自己的field</p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">写法一</span><br><span class="line"><span class="keyword">object</span> StringUtils&#123;</span><br><span class="line">    <span class="meta">@JvmStatic</span> <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span> <span class="params">( str : <span class="type">String</span>)</span></span> : <span class="built_in">Boolean</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>==str</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">写法二</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="keyword">companion</span> <span class="keyword">object</span> &#123;</span><br><span class="line">       <span class="function"><span class="keyword">fun</span> <span class="title">isEmpty</span><span class="params">(str: <span class="type">String</span>)</span></span>: <span class="built_in">Boolean</span> &#123;</span><br><span class="line">	        <span class="keyword">return</span> <span class="string">""</span> == str</span><br><span class="line">	    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">StringUtils.isEmpty(<span class="string">"hello"</span>);</span><br><span class="line">StringUtils.Companion.isEmpty(<span class="string">"hello"</span>);</span><br></pre></td></tr></table></figure>
-<h4 id="Java-中调用-Kotlin"><a href="#Java-中调用-Kotlin" class="headerlink" title="Java 中调用 Kotlin"></a><a href="https://www.kotlincn.net/docs/reference/java-to-kotlin-interop.html" target="_blank" rel="noopener">Java 中调用 Kotlin</a></h4>
+<h4 id="Java-中调用-Kotlin"><a href="#Java-中调用-Kotlin" class="headerlink" title="Java 中调用 Kotlin"></a><a href="https://www.kotlincn.net/docs/reference/java-to-kotlin-interop.html" target="_blank" rel="noopener">Java 中调用 Kotlin</a></h4><p>####委托</p>
+
       
     </div>
 
@@ -636,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
