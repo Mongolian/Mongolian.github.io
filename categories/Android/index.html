@@ -126,7 +126,7 @@
   <meta name="description" content="记录学习，生活中的点点滴滴...">
 <meta property="og:type" content="website">
 <meta property="og:title" content="lee">
-<meta property="og:url" content="http://yoursite.com/categories/Android/index.html">
+<meta property="og:url" content="http://yoursite.com/categories/android/index.html">
 <meta property="og:site_name" content="lee">
 <meta property="og:description" content="记录学习，生活中的点点滴滴...">
 <meta property="og:locale" content="zh-CN">
@@ -139,7 +139,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Android/"/>
+  <link rel="canonical" href="http://yoursite.com/categories/android/"/>
 
 
 
@@ -149,7 +149,7 @@
   };
 </script>
 
-  <title>分类: Android | lee</title>
+  <title>分类: android | lee</title>
   
 
 
@@ -357,7 +357,7 @@
 
     <div id="posts" class="posts-collapse">
       <div class="collection-title">
-        <h1>Android<small>分类</small>
+        <h1>android<small>分类</small>
         </h1>
       </div>
 
@@ -369,37 +369,9 @@
 
       <h2 class="post-title">
         
-            <a class="post-title-link" href="/2018/08/16/bugly热补丁发布流程/" itemprop="url">
+            <a class="post-title-link" href="/2018/08/29/android-开源APP收集/" itemprop="url">
               
-                <span itemprop="name">Bugly热补丁发布和使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-08-16T00:08:45+08:00"
-              content="2018-08-16" >
-          08-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2016/12/09/Tinker-接入/" itemprop="url">
-              
-                <span itemprop="name">Tinker 热补丁接入过程中的坑！！！</span>
+                <span itemprop="name">Android 开源APP收集</span>
               
             </a>
         
@@ -407,9 +379,9 @@
 
       <div class="post-meta">
         <time class="post-time" itemprop="dateCreated"
-              datetime="2016-12-09T10:23:35+08:00"
-              content="2016-12-09" >
-          12-09
+              datetime="2018-08-29T18:56:45+08:00"
+              content="2018-08-29" >
+          08-29
         </time>
       </div>
 
@@ -1027,6 +999,54 @@
         searchFunc(path, 'local-search-input', 'local-search-result');
       } else {
         proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 背景动画 -->
+<!-- <script type="text/javascript" src="/js/src/particle.js"></script> -->
+
+<!-- <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script> -->   proceedsearch();
       };
     });
 

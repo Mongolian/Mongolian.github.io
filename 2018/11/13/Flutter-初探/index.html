@@ -1,0 +1,1427 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.3.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.3.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.3.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.3.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.3.0',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Flutter 初探官网 https://flutter.io/中文网 https://flutterchina.club/ Flutter ,Weex , RN … 跨端开发方案 介绍  Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，并且是未来新操作系统Fuchsia的默认开发套件。自从2017年5月发布第一个版本以来，目前Flutter已经发布">
+<meta name="keywords" content="flutter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flutter 初探">
+<meta property="og:url" content="http://yoursite.com/2018/11/13/Flutter-初探/index.html">
+<meta property="og:site_name" content="lee">
+<meta property="og:description" content="Flutter 初探官网 https://flutter.io/中文网 https://flutterchina.club/ Flutter ,Weex , RN … 跨端开发方案 介绍  Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，并且是未来新操作系统Fuchsia的默认开发套件。自从2017年5月发布第一个版本以来，目前Flutter已经发布">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1656668-285831020e26abb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1656668-4fb942cfec564d74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/13818615-a70caffe7b359e4a?imageMogr2/auto-orient/strip%7CimageView2/2/w/800">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1656668-63dae4c06c6f7739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1656668-988d153b83128e5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/1656668-e2ccfc3d475dbf01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://mmbiz.qpic.cn/mmbiz_png/DUwiayJ0Mj1Fkopdw2CmBlZT1ibVLdCULIF0CJVt8pmosd5DnIOFibIxNNibZoh5jln3Y1LMpR1uzdQ39uhH3lG4Jg/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1">
+<meta property="og:updated_time" content="2018-11-13T03:08:39.710Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flutter 初探">
+<meta name="twitter:description" content="Flutter 初探官网 https://flutter.io/中文网 https://flutterchina.club/ Flutter ,Weex , RN … 跨端开发方案 介绍  Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，并且是未来新操作系统Fuchsia的默认开发套件。自从2017年5月发布第一个版本以来，目前Flutter已经发布">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/1656668-285831020e26abb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/11/13/Flutter-初探/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Flutter 初探 | lee</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+  
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/love.js"></script>
+
+
+
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">lee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-tags" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/13/Flutter-初探/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="lee">
+      <meta itemprop="description" content="记录学习，生活中的点点滴滴...">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flutter 初探
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-11-13 11:08:45 / 修改时间：11:08:39" itemprop="dateCreated datePublished" datetime="2018-11-13T11:08:45+08:00">2018-11-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/flutter/" itemprop="url" rel="index"><span itemprop="name">flutter</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/13/Flutter-初探/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/13/Flutter-初探/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Flutter-初探"><a href="#Flutter-初探" class="headerlink" title="Flutter 初探"></a>Flutter 初探</h3><p>官网 <a href="https://flutter.io/" target="_blank" rel="noopener">https://flutter.io/</a><br>中文网 <a href="https://flutterchina.club/" target="_blank" rel="noopener">https://flutterchina.club/</a></p>
+<h4 id="Flutter-Weex-RN-…-跨端开发方案"><a href="#Flutter-Weex-RN-…-跨端开发方案" class="headerlink" title="Flutter ,Weex , RN … 跨端开发方案"></a>Flutter ,Weex , RN … 跨端开发方案</h4><p><img src="https://upload-images.jianshu.io/upload_images/1656668-285831020e26abb8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h4><blockquote>
+</blockquote>
+<p>Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面，并且是未来新操作系统Fuchsia的默认开发套件。自从2017年5月发布第一个版本以来，目前Flutter已经发布了近60个版本，并且在2018年5月发布了第一个“Ready for Production Apps”的Beta 3版本，6月20日发布了第一个“Release Preview”版本，9月19日发布了<br>Flutter Release Preview 2 版本，也是1.0之前的最后一个预览版本。</p>
+<h4 id="开发语言Dart"><a href="#开发语言Dart" class="headerlink" title="开发语言Dart"></a>开发语言Dart</h4><ul>
+<li>官网： <a href="https://www.dartlang.org" target="_blank" rel="noopener">https://www.dartlang.org</a> </li>
+<li>中文网：<a href="http://dart.goodev.org/guides/language/language-tour" target="_blank" rel="noopener">http://dart.goodev.org/guides/language/language-tour</a></li>
+</ul>
+<blockquote>
+<p>Dart是一种强类型、跨平台的客户端开发语言。具有专门为客户端优化、高生产力、快速高效、可移植（兼容ARM/x86）、易学的OO编程风格和原生支持响应式编程（Stream &amp; Future）等优秀特性。Dart主要由Google负责开发和维护，在2011年10启动项目，2017年9月发布第一个2.0-dev版本。</p>
+</blockquote>
+<p>为什么选择dart 做为Flutter开发语言?</p>
+<ul>
+<li>dart 团队在flutter团队旁边，支持更有效</li>
+<li>dart具有jit&amp;Aot双重编译执行方式。这样就能利用JIt进行开发阶段的hot reload开发，提升研发效率。同时在最终release版本中使用aot将dart代码直接变成目标平台的指令集代码。简单高效，最大限度保障了性能</li>
+<li>dart针对flutter中频繁创建销毁Widget的场景做了专门的gc优化。通过分代无锁垃圾回收器，将gc对性能的影响降至最低</li>
+<li>dart语言在语法上面是类java的，易学易用</li>
+<li>健全的类型系统，同时支持静态类型检查和运行时类型检查</li>
+<li>丰富的底层库，Dart自身提供了非常多的库</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/1656668-4fb942cfec564d74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="DartVM的内存分配"><a href="#DartVM的内存分配" class="headerlink" title="DartVM的内存分配"></a>DartVM的内存分配</h5><p>Flutter对Dart源码做了AOT编译，直接将Dart源码编译成了本地字节码，没有了解释执行的过程，提升执行性能,Dart的”线程”(Isolate)是不共享内存的，各自的堆(Heap)和栈(Stack)都是隔离的，这种分配策略可以让Dart实现无锁的快速分配 ,而彼此之间通过消息通道来通信,</p>
+<p>Dart VM将内存管理分为新生代(New Generation)和老年代(Old Generation)。</p>
+<ul>
+<li>新生代(New Generation): 通常初次分配的对象都位于新生代中，该区域主要是存放内存较小并且生命周期较短的对象，比如局部变量。新生代会频繁执行内存回收(GC)，回收采用“复制-清除”算法，将内存分为两块(图中的from 和 to)，运行时每次只使用其中的一块(图中的from)，另一块备用(图中的to)。当发生GC时，将当前使用的内存块中存活的对象拷贝到备用内存块中，然后清除当前使用内存块，最后，交换两块内存的角色。</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/13818615-a70caffe7b359e4a?imageMogr2/auto-orient/strip%7CimageView2/2/w/800" alt=""></p>
+<ul>
+<li>老年代(Old Generation): 在新生代的GC中“幸存”下来的对象，它们会被转移到老年代中。老年代存放生命力周期较长，内存较大的对象。老年代通常比新生代要大很多。老年代的GC回收采用“标记-清除”算法，分成标记和清除两个阶段。在标记阶段，所有线程参与并发的完成对回收对象的标记，降低标记阶段耗时。在清理阶段，由GC线程负责清理回收对象，和应用线程同时执行，不影响应用运行</li>
+</ul>
+<h4 id="Flutter-架构"><a href="#Flutter-架构" class="headerlink" title="Flutter 架构"></a>Flutter 架构</h4><p><img src="https://upload-images.jianshu.io/upload_images/1656668-63dae4c06c6f7739.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="StatelessWidget-和-StatefulWidget的区别"><a href="#StatelessWidget-和-StatefulWidget的区别" class="headerlink" title="StatelessWidget 和 StatefulWidget的区别"></a>StatelessWidget 和 StatefulWidget的区别</h4><blockquote>
+</blockquote>
+<p>StatelessWidget是状态不可变的widget。初始状态设置以后就不可再变化。如果需要变化需要重新创建。StatefulWidget可以保存自己的状态。那问题是既然widget都是immutable的，怎么保存状态？其实Flutter是通过引入了State来保存状态。当State的状态改变时，能重新构建本节点以及孩子的Widget树来进行UI变化。注意：如果需要主动改变State的状态，需要通过setState()方法进行触发，单纯改变数据是不会引发UI改变的</p>
+<h4 id="StatefulWidget-state生命周期"><a href="#StatefulWidget-state生命周期" class="headerlink" title="StatefulWidget state生命周期"></a>StatefulWidget state生命周期</h4><p><img src="https://upload-images.jianshu.io/upload_images/1656668-988d153b83128e5f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="屏幕快照 2018-10-26 下午3.19.14.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/1656668-e2ccfc3d475dbf01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>didChangeDependencies有两种情况会被调用。</p>
+<ul>
+<li>创建时候在initState 之后被调用 </li>
+<li>在依赖的InheritedWidget发生变化的时候会被调用,正常的退出流程中会执行deactivate然后执行dispose。</li>
+<li>但是也会出现deactivate以后不执行dispose，直接加入树中的另一个节点的情况。</li>
+</ul>
+<p>这里的状态改变包括两种可能：</p>
+<ul>
+<li>通过setState内容改变 </li>
+<li>父节点的state状态改变，导致孩子节点的同步变化</li>
+</ul>
+<h4 id="widget-基础组件"><a href="#widget-基础组件" class="headerlink" title="widget 基础组件"></a>widget 基础组件</h4><p>一切即Widget。在flutter的世界里，包括views,view controllers,layouts等在内的概念都建立在Widget之上。</p>
+<h5 id="Container"><a href="#Container" class="headerlink" title="Container"></a>Container</h5><p>容器，一个常用的控件，由基本的绘制、位置和大小控件组成。负责创建矩形的可视元素，可以用BoxDecoration来设计样式，比如背景、边框和阴影，Container也有边距、填充和大小限制，另外，还可以在三维空间利用矩阵进行变换</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">BaseWidget.dart</span><br><span class="line"> Container container = new Container(</span><br><span class="line">      constraints: new BoxConstraints.expand(</span><br><span class="line">        height: Theme.<span class="keyword">of</span>(context).textTheme.display1.fontSize * <span class="number">1.1</span> + <span class="number">100.0</span>,</span><br><span class="line">      ),</span><br><span class="line">      color: Colors.teal.shade700,</span><br><span class="line">      alignment: Alignment.center,</span><br><span class="line">      child: new Text(<span class="string">'Hello World'</span>, style: Theme.<span class="keyword">of</span>(context).textTheme.display1.copyWith(color: Colors.white)),</span><br><span class="line">    );</span><br><span class="line">```   </span><br><span class="line"></span><br><span class="line">##### Stack </span><br><span class="line"></span><br><span class="line">一个控件叠在另一个控件的上面</span><br></pre></td></tr></table></figure>
+<p>DisplayImage.dart<br>Stack(<br>      // Aligment 的取值范围为 [-1, 1]，Stack 中心为 (0, 0)，<br>      // 这里设置为 (-0.5, -0.5) 后，可以让文本对齐到 Container 的 1/4 处<br>      alignment: const Alignment(-0.5, -0.5),<br>      children: <widget>[<br>        Container(<br>          width: 200.0,<br>          height: 200.0,<br>          color: Colors.blue,<br>        ),<br>        Text(‘foobar’),<br>      ],<br>    );</widget></p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### Row</span><br><span class="line"></span><br><span class="line">flex水平布局控件，能够将子控件水平排列，是基于Web的flexbox的布局模式设计的。</span><br><span class="line"></span><br><span class="line">Row子控件有灵活与不灵活的两种，Row首先列出不灵活的子控件，减去它们的总宽度，计算还有多少可用的空间。然后Row按照Flexible.flex属性确定的比例在可用空间中列出灵活的子控件。要控制灵活子控件，需要使用Expanded控件</span><br></pre></td></tr></table></figure>
+<p>BaseWidget.dart<br>Row row = new Row(<br>      children: <widget>[<br>        new Expanded(<br>          flex : 1,<br>          child: new Text(‘Deliver features faster’, textAlign: TextAlign.center),<br>        ),<br>        new Expanded(<br>          flex : 1,<br>          child: new Text(‘Craft beautiful UIs’, textAlign: TextAlign.center),<br>        ),<br>        new Expanded(<br>          flex : 2,<br>          child: new FittedBox(<br>            fit: BoxFit.contain, // otherwise the logo will be tiny<br>            child: const FlutterLogo(),<br>          ),<br>        ),<br>      ],<br>    );<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">!<span class="selector-attr">[]</span>(<span class="attribute">https</span>:<span class="comment">//jekton.github.io/2018/08/26/flutter-ui-basic/row-diagram.png)</span></span><br><span class="line"></span><br><span class="line">![](<span class="attribute">https</span>:<span class="comment">//jekton.github.io/2018/08/26/flutter-ui-basic/column-diagram.png)</span></span><br><span class="line"></span><br><span class="line">##### Text</span><br><span class="line"></span><br><span class="line">	Container(</span><br><span class="line">	        <span class="attribute">child</span>: Center(</span><br><span class="line">	          <span class="attribute">child</span>: Text(<span class="string">'hello world hello world hello world hello world hello world '</span> ,</span><br><span class="line">	          <span class="attribute">textAlign</span>: TextAlign.center,</span><br><span class="line">	          <span class="attribute">overflow</span>: TextOverflow.ellipsis,</span><br><span class="line">	          <span class="attribute">style</span>: TextStyle(</span><br><span class="line">	            <span class="attribute">color</span>: Colors.red,</span><br><span class="line">	            <span class="attribute">fontSize</span>: <span class="number">30.0</span>,</span><br><span class="line">	            <span class="attribute">letterSpacing</span>: <span class="number">2.0</span>,</span><br><span class="line">	            <span class="attribute">fontFamily</span>: <span class="string">'Raleway'</span>,</span><br><span class="line">	            <span class="attribute">fontStyle</span>: FontStyle.normal</span><br><span class="line">	          ),),</span><br><span class="line">	        ),</span><br><span class="line">	    )</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line"></span><br><span class="line">![屏幕快照 <span class="number">2018</span>-<span class="number">10</span>-<span class="number">29</span> 上午<span class="number">10.32</span>.<span class="number">53</span>.png](<span class="attribute">https</span>:<span class="comment">//upload-images.jianshu.io/upload_images/1656668-b03c2b60542144e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span></span><br><span class="line"></span><br><span class="line">#### TextField ，Checkbox ，Switch，AlertDialog，RaisedButton , FlatButton</span><br></pre></td></tr></table></figure></widget></p>
+<p>BaseWidget.dart</p>
+<p> TextField textFormField = TextField(<br>      decoration: InputDecoration(<br>        labelText: “you select is ${isTrue == true ? “true “ : “false”}”,<br>      ),<br>      onChanged: (str){<br>        setState(() {<br>          textContent = str;<br>        });</p>
+<pre><code>  },
+);
+
+Checkbox checkbox = Checkbox(
+    value: isTrue,
+    onChanged: (bool) {
+      setState(() {
+        isTrue = bool;
+      });
+    });
+
+Switch witch = Switch(
+  value: isTrue,
+  onChanged: (bool) {
+    setState(() {
+      isTrue = bool;
+    });
+  },
+);
+
+AlertDialog alertDialog = AlertDialog(
+  title: Text(&apos;标题&apos;),
+  content: Text(textContent),
+
+);
+var flatBtn = FlatButton(
+  onPressed: () =&gt; print(&apos;FlatButton pressed&apos;),
+  child: Text(&apos;BUTTON&apos;),
+);
+</code></pre><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#### Icon</span><br><span class="line"></span><br><span class="line">在Flutter中默认为大家提供了很多自带的小图标，我们可以根据自己的需要去选择这些图标</span><br><span class="line">Icon的构造方法</span><br></pre></td></tr></table></figure>
+<p>const Icon(this.icon//IconDate, {<br>   Key key,<br>   this.size,//大小<br>   this.color,//颜色<br>   this.semanticLabel,//标志位<br>   this.textDirection,//绘制方向，一般使用不到<br> })<br> 在Flutter内部为我们提供了material_fonts，在安装目录flutter\bin\cache\artifacts\material_fonts下<br>在Flutter中，我们可以根据Icons中定义的图标来进行引入，在Icon是中大概定义了1000个左右的Icon。<br>使用内置Icon图片代码<br>  new Center(<br>        child: new Icon(Icons.android,size: 100.0),<br>      )<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">使用第三方图标</span><br><span class="line"></span><br><span class="line">制作字体库</span><br><span class="line"></span><br><span class="line">- https:<span class="comment">//icomoon.io/app/#/select</span></span><br><span class="line">- http:<span class="comment">//iconfont.cn/?spm=a313x.7781069.1998910419.d4d0a486a</span></span><br><span class="line"></span><br><span class="line">![](http:<span class="comment">//ww1.sinaimg.cn/large/0060lm7Tly1fp6jesi910j30kk091jui.jpg)</span></span><br><span class="line"></span><br><span class="line">#### GridView</span><br></pre></td></tr></table></figure></p>
+<p>GridView.dart<br> GridView.count(<br>      primary: false,<br>      scrollDirection: Axis.vertical,<br>      padding: EdgeInsets.all(2.0),<br>      crossAxisCount: 2,<br>      children: <widget>[<br>        makeCardView(Icons.add, ‘add’),<br>        makeCardView(Icons.list, ‘list’),<br>        makeCardView(Icons.map, ‘map’),<br>        makeCardView(Icons.close, ‘close’),<br>        makeCardView(Icons.share, ‘share’),<br>        makeCardView(Icons.star, ‘start’),<br>        makeCardView(Icons.add, ‘add’),<br>        makeCardView(Icons.list, ‘list’),<br>        makeCardView(Icons.map, ‘map’),<br>        makeCardView(Icons.close, ‘close’),<br>        makeCardView(Icons.share, ‘share’),<br>        makeCardView(Icons.star, ‘start’),<br>      ],<br>    );<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 图片加载</span><br><span class="line">使用 Image，可以让我们向用户展示一张图片。图片的来源可以是网络、文件、资源和内存，它们对应的构造函数分别是</span><br></pre></td></tr></table></figure></widget></p>
+<p>Image.asset(name);<br>Image.file(file);<br>Image.memory(bytes);<br>Image.network(src);</p>
+<p>DisplayImage.dart</p>
+<p>@override<br>  Widget build(BuildContext context) {<br>    final url = “<a href="https://gw.alicdn.com/tfs/TB1SZxwBuuSBuNjy1XcXXcYjFXa-828-374.png&quot;" target="_blank" rel="noopener">https://gw.alicdn.com/tfs/TB1SZxwBuuSBuNjy1XcXXcYjFXa-828-374.png&quot;</a>;<br>    return MaterialApp(<br>      title: ‘display image’,<br>      home: Scaffold(<br>        appBar: AppBar(<br>          title: new Text(‘display image’),<br>        ),<br>        body: Image.network(url),<br>      ),<br>    );<br>  }</p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 动画</span><br><span class="line"></span><br><span class="line">##### CurvedAnimation</span><br></pre></td></tr></table></figure>
+<p>TestAnimationUI.dart</p>
+<p>class _MyFadeTest extends State<myfadetest> with TickerProviderStateMixin {<br>  AnimationController controller;<br>  CurvedAnimation curve;</myfadetest></p>
+<p>  @override<br>  void initState() {<br>    controller = new AnimationController(duration: const Duration(milliseconds: 2000), vsync: this);<br>    curve = new CurvedAnimation(parent: controller, curve: Curves.elasticInOut);<br>  }</p>
+<p>  @override<br>  Widget build(BuildContext context) {<br>    return new Scaffold(<br>      appBar: new AppBar(<br>        title: new Text(widget.title),<br>      ),<br>      body: new Center(<br>          child: new Container(<br>              child: new FadeTransition(<br>                  opacity: curve,<br>                  child: new FlutterLogo(<br>                    size: 100.0,<br>                  )))),<br>      floatingActionButton: new FloatingActionButton(<br>        tooltip: ‘Fade’,<br>        child: new Icon(Icons.brush),<br>        onPressed: () {<br>          controller.forward();<br>        },<br>      ),<br>    );<br>  }<br>}<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### InkWell 水波纹效果</span><br></pre></td></tr></table></figure></p>
+<p>InkWell.dart<br>new InkWell(<br>      // When the user taps the button, show a snackbar<br>      onTap: () {<br>        Scaffold.of(context).showSnackBar(new SnackBar(<br>          content: new Text(‘Tap’),<br>        ));<br>      },<br>      child: new Container(<br>        padding: new EdgeInsets.all(12.0),<br>        child: new Text(‘Flat Button’),<br>      ),<br>    );<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### SharedPreferences</span><br><span class="line">在pubspec.yaml 文件中引入SharedPreferences 插件</span><br></pre></td></tr></table></figure></p>
+<p>dependencies:<br>  flutter:<br>    sdk: flutter</p>
+<h1 id="The-following-adds-the-Cupertino-Icons-font-to-your-application"><a href="#The-following-adds-the-Cupertino-Icons-font-to-your-application" class="headerlink" title="The following adds the Cupertino Icons font to your application."></a>The following adds the Cupertino Icons font to your application.</h1><h1 id="Use-with-the-CupertinoIcons-class-for-iOS-style-icons"><a href="#Use-with-the-CupertinoIcons-class-for-iOS-style-icons" class="headerlink" title="Use with the CupertinoIcons class for iOS style icons."></a>Use with the CupertinoIcons class for iOS style icons.</h1><p>  cupertino_icons: ^0.1.2<br>  shared_preferences: “0.4.2”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br></pre></td></tr></table></figure>
+<p>share_preference_demo.dart</p>
+<p>  void saveSharedPrefence() async {<br>    SharedPreferences sharedPreferences = await _sPres;<br>    listOne.add(textEditingController.text);<br>    sharedPreferences.setStringList(“list”, listOne);<br>    textEditingController.clear();<br>  }</p>
+<p>  void clearSharedPrefence() async {<br>    SharedPreferences sharedPreferences = await _sPres;<br>    sharedPreferences.clear();<br>    setState(() {<br>      listOne = [];<br>      listTwo = [];<br>    });<br>  }</p>
+<p>  void getString () async {<br>    SharedPreferences sharedPreferences = await _sPres;<br>    listTwo = sharedPreferences.getStringList(“list”);<br>    setState(() {</p>
+<pre><code>});
+</code></pre><p>  }<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 异步和线程</span><br><span class="line"></span><br><span class="line">##### isolate</span><br><span class="line">[官方文档](https://api.dartlang.org/stable/1.24.3/dart-isolate/dart-isolate-library.html)</span><br><span class="line"></span><br><span class="line">Dart是基于单线程模型的语言。在Dart中有一个很重要的概念叫isolate，它其实就是一个线程或者进程的实现，具体取决于Dart的实现。默认情况下，我们用Dart写的应用都是运行在main isolate中的（可以对应理解为Android中的main thread）。当然我们在必要的时候也可以通过isolate API创建新的isolate，多个isolate可以更好的利用多核CPU的特性来提高效率。但是要注意的是在Dart中isolate之间是无法直接共享内存的，不同的isolate之间只能通过isolate API进行通信。</span><br><span class="line"></span><br><span class="line">##### event loop</span><br><span class="line">[官方文档](https://webdev.dartlang.org/articles/performance/event-loop)</span><br><span class="line"></span><br><span class="line">在Dart运行环境中也是靠事件驱动的 ,通过event loop不停的从队列中获取消息或者事件来驱动整个应用的运行。但是不同点在于一个Dart编写的app中一般有两个队列，一个叫做event queue，另一个叫做microtask queue.</span><br><span class="line"></span><br><span class="line">- event queue包含所有外来的事件：I/O，mouse events，drawing events，timers，isolate之间的message等。任意isolate中新增的event（I/O，mouse events，drawing events，timers，isolate的message）都会放入event queue中排队等待执行.</span><br><span class="line">- microtask queue只在当前isolate的任务队列中排队，优先级高于event queue</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![](https://webdev.dartlang.org/articles/performance/images/both-queues.png)</span><br><span class="line"></span><br><span class="line">这张图以main isolate为例，描述了app运行时一个isolate中的正常运行流程。</span><br><span class="line"></span><br><span class="line">- 启动app。首先执行main方法。</span><br><span class="line">- 在main方法执行完后，开始处理microtask queue，从中取出microtask执行，直到microtask queue为空。这里可以看到event loop在运行时是优先处理microtask queue的。</span><br><span class="line">- 当microtask queue为空才会开始处理event queue，如果event queue不为空则从中取出一个event执行。</span><br><span class="line">- 这里要注意的是event queue并不会一直遍历完，而是一次取出一个event执行，执行完后就回到前面去重新判断microtask queue是否为空。</span><br><span class="line">- 所以这里可以看到microtask queue存在的一个重要意义是由它的运行时机决定的，当我们想要在处理当前的event之后，并且在处理下一个event之前做一些事情，或者我们想要在处理所有event之前做一些事情，这时候可以将这些事情放到microtask queue中。</span><br><span class="line">- 当microtask queue和event queue都为空时，app可以正常退出。</span><br><span class="line"></span><br><span class="line">&gt;</span><br><span class="line">&gt;Note:</span><br><span class="line">当event loop在处理microtask queue时，会阻塞住event queue。绘制和交互等任务是作为event存放在event queue中的，所以当microtask queue中任务太多或处理时长太长，将会导致应用的绘制和交互等行为被卡住。</span><br><span class="line"></span><br><span class="line">##### feture async await</span><br><span class="line"></span><br><span class="line">- Future是Dart中提供的一个类，它用于封装一段在将来会被执行的代码逻辑。构造一个Future就会向event queue中添加一条记录</span><br><span class="line">- 在Dart中我们可以通过async关键字来声明一个异步方法，异步方法会在调用后立即返回给调用者一个Future对象,而异步方法的方法体将会在后续被执行</span><br><span class="line">- await表达式的表达式部分通常是一个Future类型，即在await处挂起后交出代码的执行权限直到该Future完成。在Future完成后将包含在Future内部的数据类型作为整个await表达式的返回值，接着异步方法继续从await表达式挂起点后继续执行</span><br><span class="line"></span><br><span class="line">例子：</span><br></pre></td></tr></table></figure></p>
+<pre><code>import &apos;dart:async&apos;;
+Future&lt;void&gt; printDailyNewsDigest() async {
+  var newsDigest = await gatherNewsReports();
+  print(newsDigest);
+}
+
+main() {
+  printDailyNewsDigest();
+  printWinningLotteryNumbers();
+  printWeatherForecast();
+  printBaseballScore();
+}
+
+printWinningLotteryNumbers() {
+  print(&apos;Winning lotto numbers: [23, 63, 87, 26, 2]&apos;);
+}
+
+printWeatherForecast() {
+  print(&quot;Tomorrow&apos;s forecast: 70F, sunny.&quot;);
+}
+
+printBaseballScore() {
+  print(&apos;Baseball score: Red Sox 10, Yankees 0&apos;);
+}
+
+const news = &apos;&lt;gathered news goes here&gt;&apos;;
+const oneSecond = Duration(seconds: 1);
+执行结果：
+Winning lotto numbers: [23, 63, 87, 26, 2]
+Tomorrow&apos;s forecast: 70F, sunny.
+Baseball score: Red Sox 10, Yankees 0
+&lt;gathered news goes here&gt;
+</code></pre><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">![](https:<span class="comment">//www.dartlang.org/tutorials/images/async-await.png)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">then</span><span class="params">()</span></span>操作</span><br></pre></td></tr></table></figure>
+<p>main() async {<br>  await printDailyNewsDigest();<br>  await printWinningLotteryNumbers();<br>  doSomethingWith(await printWeatherForecast());<br>}</p>
+<p>printDailyNewsDigest()<br>      .then((aValue) =&gt; printWinningLotteryNumbers())<br>      .then((bValue) =&gt; printWeatherForecast())<br>      .then((cValue) =&gt; printBaseballScore());</p>
+<p>结果：</p>
+<p><gathered news="" goes="" here=""><br>Winning lotto numbers: [23, 63, 87, 26, 2]<br>Tomorrow’s forecast: 70F, sunny.<br>Baseball score: Red Sox 10, Yankees 0</gathered></p>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">##### 网络请求和response 解析</span><br></pre></td></tr></table></figure>
+<p>GetData.dart</p>
+<p>import ‘package:flutter/material.dart’;<br>import ‘package:flutter/rendering.dart’;<br>import ‘package:http/http.dart’ as http;<br>import ‘dart:async’;<br>import ‘dart:convert’;</p>
+<p>main(){<br>  debugPaintSizeEnabled=true;<br>  runApp(MaterialApp(<br>    title: ‘fetch get data’,<br>    home: new MyApp(),<br>  ));<br>}</p>
+<p>Future<get> fetchGet() async{<br>  final response = await http.get(<br>    ‘<a href="https://jsonplaceholder.typicode.com/posts/1&#39;" target="_blank" rel="noopener">https://jsonplaceholder.typicode.com/posts/1&#39;</a>,<br>    headers: {“key”:”value1”}<br>  );<br>  if(response.statusCode == 200){<br>    return Get.formJson(json.decode(response.body));<br>  }else{<br>    throw Exception(‘Failed to load post’);<br>  }<br>}</get></p>
+<p>class Get{<br>  final int userId;<br>  final int id;<br>  final String title;<br>  final String body;</p>
+<p>  Get({this.userId, this.id, this.title, this.body});</p>
+<p>  factory Get.formJson(Map<string ,dynamic=""> maps){<br>    return Get(userId:maps[‘userId’], id:maps[‘id’], title:maps[‘title’], body:maps[‘body’]);<br>  }<br>}</string></p>
+<p>class MyApp extends StatelessWidget{<br>  @override<br>  Widget build(BuildContext context) {<br>    return Scaffold(<br>      appBar:  AppBar(<br>        title: Text(‘fetch get data’),<br>      ),<br>      body: Center(<br>        child: FutureBuilder(<br>            future: fetchGet(),<br>            builder: (context,snapshot){<br>              if (snapshot.hasData) {<br>                return Text(snapshot.data.title);<br>              } else if (snapshot.hasError) {<br>                return Text(“${snapshot.error}”);<br>              }<br>              // By default, show a loading spinner<br>              return CircularProgressIndicator();<br>            }),<br>      ),<br>    );<br>  }</p>
+<p>}<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">##### 如何创建一个新isolate</span><br><span class="line">例子：async_new_isolate.dart</span><br></pre></td></tr></table></figure></p>
+<p>loadData() async {<br>    print(‘loadData…’);<br>    ReceivePort receivePort = new ReceivePort();<br>    await Isolate.spawn(dataLoader, receivePort.sendPort);</p>
+<pre><code>// 获取到子线层sendPort
+SendPort sendPort = await receivePort.first;
+print(&apos;sendPort:  $sendPort&apos;);
+List msg = await sendReceive(sendPort, &quot;https://jsonplaceholder.typicode.com/posts&quot;);
+print(&apos;list msg:  $msg&apos;);
+setState(() {
+  widgets = msg;
+});
+</code></pre><p>  }</p>
+<p>// the entry point for the isolate<br>  static dataLoader(SendPort sendPort) async {<br>    print(‘dataLoader…’);<br>    // Open the ReceivePort for incoming messages.<br>    ReceivePort port = new ReceivePort();</p>
+<pre><code>// Notify any other isolates what port this isolate listens to.
+sendPort.send(port.sendPort);
+
+await for (var msg in port) {
+  print(&apos;msg:  $msg&apos;);
+  String data = msg[0];
+  SendPort replyTo = msg[1];
+
+  String dataURL = data;
+  http.Response response = await http.get(dataURL);
+  // Lots of JSON to parse
+  final bodyStr = json.decode(response.body);
+  print(&apos;callback msg:  &apos;);
+  replyTo.send(json.decode(response.body));
+}
+</code></pre><p>  }</p>
+<p>  Future sendReceive(SendPort port, msg) {<br>    ReceivePort response = new ReceivePort();<br>    print(‘send msg:  $msg’);<br>    port.send([msg, response.sendPort]);<br>    return response.first;<br>  }</p>
+<p> 执行结果：<br>I/flutter (28815): loadData…<br>I/flutter (28815): dataLoader…<br>I/flutter (28815): sendPort:  SendPort<br>I/flutter (28815): send msg:  <a href="https://jsonplaceholder.typicode.com/posts" target="_blank" rel="noopener">https://jsonplaceholder.typicode.com/posts</a><br>I/flutter (28815): msg:  [<a href="https://jsonplaceholder.typicode.com/posts" target="_blank" rel="noopener">https://jsonplaceholder.typicode.com/posts</a>, SendPort]<br>I/flutter (28815): callback msg:<br>I/flutter (28815): list msg:<br><code>`</code></p>
+<h4 id="综合案例"><a href="#综合案例" class="headerlink" title="综合案例"></a>综合案例</h4><h4 id="Flutter-插件库"><a href="#Flutter-插件库" class="headerlink" title="Flutter 插件库"></a>Flutter 插件库</h4><p><a href="https://pub.dartlang.org/packages/android_intent" target="_blank" rel="noopener">官网</a><br><a href="https://github.com/flutterchina/dio/blob/flutter/README-ZH.md" target="_blank" rel="noopener">dio</a></p>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><p><a href="https://mp.weixin.qq.com/s/XSfPs2hX2P7FPqRUyematA" target="_blank" rel="noopener">闲鱼Flutter VS RN 对比</a><br><a href="https://tech.meituan.com/waimai-flutter-practice.html" target="_blank" rel="noopener">美团文章</a><br><img src="https://mmbiz.qpic.cn/mmbiz_png/DUwiayJ0Mj1Fkopdw2CmBlZT1ibVLdCULIF0CJVt8pmosd5DnIOFibIxNNibZoh5jln3Y1LMpR1uzdQ39uhH3lG4Jg/640?wx_fmt=png&amp;wxfrom=5&amp;wx_lazy=1&amp;wx_co=1" alt=""></p>
+<h4 id="flutter-问题？"><a href="#flutter-问题？" class="headerlink" title="flutter 问题？"></a>flutter 问题？</h4><h5 id="包大小增大"><a href="#包大小增大" class="headerlink" title="包大小增大"></a>包大小增大</h5><p>Android的Apk增加8M，iOS压缩包增加16M。</p>
+<h4 id="Flutter-资源库"><a href="#Flutter-资源库" class="headerlink" title="Flutter 资源库"></a>Flutter 资源库</h4><p><a href="https://github.com/xitu/awesome-flutter" target="_blank" rel="noopener">https://github.com/xitu/awesome-flutter</a></p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/flutter/" rel="tag">flutter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/12/android-开发快捷键/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="lee" />
+            
+              <p class="site-author-name" itemprop="name">lee</p>
+              <p class="site-description motion-element" itemprop="description">记录学习，生活中的点点滴滴...</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Mongolian" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flutter-初探"><span class="nav-number">1.</span> <span class="nav-text">Flutter 初探</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter-Weex-RN-…-跨端开发方案"><span class="nav-number">1.1.</span> <span class="nav-text">Flutter ,Weex , RN … 跨端开发方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#介绍"><span class="nav-number">1.2.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#开发语言Dart"><span class="nav-number">1.3.</span> <span class="nav-text">开发语言Dart</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DartVM的内存分配"><span class="nav-number">1.3.1.</span> <span class="nav-text">DartVM的内存分配</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter-架构"><span class="nav-number">1.4.</span> <span class="nav-text">Flutter 架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StatelessWidget-和-StatefulWidget的区别"><span class="nav-number">1.5.</span> <span class="nav-text">StatelessWidget 和 StatefulWidget的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#StatefulWidget-state生命周期"><span class="nav-number">1.6.</span> <span class="nav-text">StatefulWidget state生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#widget-基础组件"><span class="nav-number">1.7.</span> <span class="nav-text">widget 基础组件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Container"><span class="nav-number">1.7.1.</span> <span class="nav-text">Container</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#The-following-adds-the-Cupertino-Icons-font-to-your-application"><span class="nav-number"></span> <span class="nav-text">The following adds the Cupertino Icons font to your application.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Use-with-the-CupertinoIcons-class-for-iOS-style-icons"><span class="nav-number"></span> <span class="nav-text">Use with the CupertinoIcons class for iOS style icons.</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#综合案例"><span class="nav-number">0.1.</span> <span class="nav-text">综合案例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter-插件库"><span class="nav-number">0.2.</span> <span class="nav-text">Flutter 插件库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能"><span class="nav-number">0.3.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#flutter-问题？"><span class="nav-number">0.4.</span> <span class="nav-text">flutter 问题？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#包大小增大"><span class="nav-number">0.4.1.</span> <span class="nav-text">包大小增大</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flutter-资源库"><span class="nav-number">0.5.</span> <span class="nav-text">Flutter 资源库</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lee</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.3.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.3.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'Mongolian',
+            repo: 'blog-gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '808d2436e5ddd386fa9161765dbdc39815fd0827',
+            
+                client_id: '9897958e56d173f92e0d'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+<!-- 背景动画 -->
+<!-- <script type="text/javascript" src="/js/src/particle.js"></script> -->
+
+<!-- <script type="text/javascript" src="/js/src/particle.js" count="50" zindex="-2" opacity="1" color="0,104,183"></script> -->
